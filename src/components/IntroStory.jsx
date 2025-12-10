@@ -1,13 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import "./IntroStory.css";
 
-const fullText = `If you didn't know much about the Baudelaire orphans, and you saw them sitting on their suitcases at Damocles Dock, you might think that they were bound for an exciting adventure.
+const fullText = `The Baudelaire siblings — Violet, Klaus, and Sunny — became orphans after a terrible fire destroyed their home and took their parents’ lives. Now they have arrived at Damocles Dock, on their way to live with their Aunt Josephine by Lake Lachrymose.
 
-After all, the three children had just disembarked from the Fickle Ferry, which had driven them across Lake Lachrymose to live with their Aunt Josephine, and in most cases such a situation would lead to thrillingly good times.
+What looks like the start of a fun adventure is, in truth, the beginning of more danger and trouble. Count Olaf, who has been chasing them for their fortune, is still somewhere out there, plotting again.
 
-But of course you would be dead wrong. For although Violet, Klaus, and Sunny Baudelaire were about to experience events that would be both exciting and memorable, they would not be exciting and memorable like having your fortune told or going to a rodeo. Their adventure would be exciting and memorable like being chased by a werewolf through a field of thorny bushes at midnight with nobody around to help you. If you are interested in reading a story filled with thrillingly good times, I am sorry to inform you that you are most certainly reading the wrong book, because the Baudelaires experience very few good times over the course of their gloomy and miserable lives. It is a terrible thing, their misfortune, so terrible that I can scarcely bring myself to write about it.
-
-So if you do not want to read a story of tragedy and sadness, this is your very last chance to put this game down.`;
+Your quest is simple but crucial:
+Help the Baudelaire orphans and Aunt Josephine escape Count Olaf by communicating with correct English grammar.`;
 
 function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
   const [displayedText, setDisplayedText] = useState("");
@@ -70,6 +69,28 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
       onClick={skipTyping}
       style={{ cursor: isTyping ? 'pointer' : 'default' }}
     >
+      <div className="intro-background">
+        <img 
+          src="/images/scene_title_blank.png" 
+          alt="Background" 
+          className="intro-background-image"
+        />
+      </div>
+      <div className="intro-water-container">
+        <img 
+          src="/images/scene_title_water.png" 
+          alt="Water" 
+          className="intro-water-image"
+        />
+      </div>
+      <div className="intro-home-container">
+        <img 
+          src="/images/home.png" 
+          alt="Home" 
+          className="intro-home"
+        />
+      </div>
+      <div className="intro-overlay"></div>
       <div className="intro-story-content">
         <div className="intro-story-text">
           {displayedText}
