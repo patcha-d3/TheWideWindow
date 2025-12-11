@@ -8,9 +8,11 @@ import MeetCaptain from "./components/04_MeetCaptain.jsx";
 import Disappear from "./components/05_Disappear.jsx";
 import OntheWay from "./components/06_OntheWay.jsx";
 import Cave from "./components/07_Cave.jsx";
+import Sailing from "./components/08_Sailing.jsx";
+import Ending from "./components/12_Ending.jsx";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("title"); // "title", "intro", "meetJosephine", "game", "meetCaptain", "disappear", "ontheWay", "cave"
+  const [currentPage, setCurrentPage] = useState("title"); // "title", "intro", "meetJosephine", "game", "meetCaptain", "disappear", "ontheWay", "cave", "sailing", "ending"
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
 
@@ -89,8 +91,23 @@ function App() {
   };
 
   const handleCaveContinue = () => {
-    // TODO: Navigate to next page
-    console.log("Continue from Cave");
+    navigateToPage("sailing");
+  };
+
+  const handleSailingBack = () => {
+    navigateToPage("cave");
+  };
+
+  const handleSailingContinue = () => {
+    navigateToPage("ending");
+  };
+
+  const handleEndingBack = () => {
+    navigateToPage("sailing");
+  };
+
+  const handleEndingBackToTitle = () => {
+    navigateToPage("title");
   };
 
   const handleNavigateToTitle = () => {
@@ -168,6 +185,28 @@ function App() {
       <Cave
         onContinue={handleCaveContinue}
         onBack={handleCaveBack}
+        isFadingOut={isFadingOut}
+        isFadingIn={isFadingIn}
+      />
+    );
+  }
+
+  if (currentPage === "sailing") {
+    return (
+      <Sailing
+        onContinue={handleSailingContinue}
+        onBack={handleSailingBack}
+        isFadingOut={isFadingOut}
+        isFadingIn={isFadingIn}
+      />
+    );
+  }
+
+  if (currentPage === "ending") {
+    return (
+      <Ending
+        onBackToTitle={handleEndingBackToTitle}
+        onBack={handleEndingBack}
         isFadingOut={isFadingOut}
         isFadingIn={isFadingIn}
       />
