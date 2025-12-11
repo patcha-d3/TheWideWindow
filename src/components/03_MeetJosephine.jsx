@@ -42,6 +42,9 @@ function MeetJosephine({ onContinue, isFadingOut, isFadingIn }) {
               Since that day, she became terrified of almost everything, especially anything connected to Lake Lachrymose.
             </div>
           </div>
+          <button className="meet-josephine-next-button" onClick={onContinue}>
+            Next
+          </button>
         </div>
         <div className="meet-josephine-right-column">
         </div>
