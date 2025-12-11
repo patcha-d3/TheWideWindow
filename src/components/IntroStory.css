@@ -42,6 +42,21 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.intro-background-image.fade-out {
+  opacity: 0;
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .intro-water-container {
@@ -114,15 +129,108 @@
   pointer-events: none;
 }
 
-.intro-story-content {
+.intro-story-layout {
   position: relative;
-  max-width: 900px;
-  width: 90%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 40px;
   padding: 40px;
+  z-index: 10;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.intro-story-layout.fade-out {
+  opacity: 0;
+}
+
+.intro-story-left-column {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.intro-story-center-column {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  z-index: 10;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-story-right-column {
+  /* Empty column for spacing */
+}
+
+.intro-characters {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.intro-character {
+  position: absolute;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.intro-character-violet {
+  width: 90%;
+  z-index: 3;
+  animation: slideInViolet 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes slideInViolet {
+  from {
+    transform: translateX(-300px) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-80px) translateY(50px);
+    opacity: 1;
+  }
+}
+
+.intro-character-klaus {
+  width: 70%;
+  z-index: 2;
+  animation: slideInKlaus 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes slideInKlaus {
+  from {
+    transform: translateX(-300px) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(60px) translateY(50px);
+    opacity: 1;
+  }
+}
+
+.intro-character-sunny {
+  width: 50%;
+  z-index: 1;
+  animation: slideInSunny 0.8s ease-out 0.9s forwards;
+}
+
+@keyframes slideInSunny {
+  from {
+    transform: translateX(-300px) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(200px) translateY(20px);
+    opacity: 1;
+  }
 }
 
 .intro-story-text {
@@ -132,6 +240,7 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   white-space: pre-wrap;
   word-wrap: break-word;
+  max-width: 100%;
 }
 
 .typing-cursor {

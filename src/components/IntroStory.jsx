@@ -12,6 +12,8 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
   const [displayedText, setDisplayedText] = useState("");
   const [showButtons, setShowButtons] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
+  const [backgroundImage, setBackgroundImage] = useState("/images/scene_title_blank.png");
+  const [isFadingToGame, setIsFadingToGame] = useState(false);
   const fadeClass = isFadingOut ? "fade-out" : isFadingIn ? "fade-in" : "";
   const timeoutRefs = useRef([]);
   const isTypingRef = useRef(true);
@@ -28,6 +30,19 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
       setIsTyping(false);
       isTypingRef.current = false;
     }
+  };
+
+  const handleReady = () => {
+    setIsFadingToGame(true);
+    // Hide text and buttons first
+    // Then change background image after fade out
+    setTimeout(() => {
+      setBackgroundImage("/images/03_bg.png");
+      // After background changes, call onReady
+      setTimeout(() => {
+        onReady();
+      }, 100);
+    }, 500); // Match fade out duration
   };
 
   useEffect(() => {
@@ -71,9 +86,9 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
     >
       <div className="intro-background">
         <img 
-          src="/images/scene_title_blank.png" 
+          src={backgroundImage} 
           alt="Background" 
-          className="intro-background-image"
+          className={`intro-background-image ${isFadingToGame ? 'fade-out' : ''}`}
         />
       </div>
       <div className="intro-water-container">
@@ -91,23 +106,48 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
         />
       </div>
       <div className="intro-overlay"></div>
-      <div className="intro-story-content">
-        <div className="intro-story-text">
-          {displayedText}
-          {displayedText.length < fullText.length && (
-            <span className="typing-cursor">|</span>
+      <div className={`intro-story-layout ${isFadingToGame ? 'fade-out' : ''}`}>
+        <div className="intro-story-left-column">
+          <div className="intro-characters">
+            <img 
+              src="/images/char_violet.png" 
+              alt="Violet" 
+              className="intro-character intro-character-violet"
+            />
+            <img 
+              src="/images/char_klaus.png" 
+              alt="Klaus" 
+              className="intro-character intro-character-klaus"
+            />
+            <img 
+              src="/images/char_sunny.png" 
+              alt="Sunny" 
+              className="intro-character intro-character-sunny"
+            />
+          </div>
+        </div>
+        <div className="intro-story-center-column">
+          {!isFadingToGame && (
+            <div className="intro-story-text">
+              {displayedText}
+              {displayedText.length < fullText.length && (
+                <span className="typing-cursor">|</span>
+              )}
+            </div>
+          )}
+          {showButtons && !isFadingToGame && (
+            <div className="intro-story-buttons">
+              <button className="intro-button leave-button" onClick={onLeave}>
+                Leave
+              </button>
+              <button className="intro-button ready-button" onClick={handleReady}>
+                Ready
+              </button>
+            </div>
           )}
         </div>
-        {showButtons && (
-          <div className="intro-story-buttons">
-            <button className="intro-button leave-button" onClick={onLeave}>
-              Leave
-            </button>
-            <button className="intro-button ready-button" onClick={onReady}>
-              Ready
-            </button>
-          </div>
-        )}
+        <div className="intro-story-right-column">
+        </div>
       </div>
     </div>
   );

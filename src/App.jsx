@@ -3,9 +3,10 @@ import WordOrderGame from "./components/WordOrderGame.jsx";
 import PageFlip from "./components/PageFlip.jsx";
 import TitlePage from "./components/TitlePage.jsx";
 import IntroStory from "./components/IntroStory.jsx";
+import MeetJosephine from "./components/03_MeetJosephine.jsx";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("title"); // "title", "intro", "game"
+  const [currentPage, setCurrentPage] = useState("title"); // "title", "intro", "meetJosephine", "game"
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
 
@@ -28,11 +29,15 @@ function App() {
   };
 
   const handleIntroReady = () => {
-    navigateToPage("game");
+    navigateToPage("meetJosephine");
   };
 
   const handleIntroLeave = () => {
     navigateToPage("title");
+  };
+
+  const handleMeetJosephineContinue = () => {
+    navigateToPage("game");
   };
 
   const handleNavigateToTitle = () => {
@@ -54,6 +59,16 @@ function App() {
       <IntroStory
         onReady={handleIntroReady}
         onLeave={handleIntroLeave}
+        isFadingOut={isFadingOut}
+        isFadingIn={isFadingIn}
+      />
+    );
+  }
+
+  if (currentPage === "meetJosephine") {
+    return (
+      <MeetJosephine
+        onContinue={handleMeetJosephineContinue}
         isFadingOut={isFadingOut}
         isFadingIn={isFadingIn}
       />

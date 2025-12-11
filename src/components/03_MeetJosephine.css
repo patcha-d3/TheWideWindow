@@ -1,0 +1,173 @@
+.meet-josephine {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.meet-josephine.fade-out {
+  opacity: 0;
+}
+
+.meet-josephine.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.meet-josephine-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.meet-josephine-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.meet-josephine-layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 40px;
+  padding: 40px;
+  z-index: 10;
+}
+
+.meet-josephine-left-column {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.meet-josephine-center-column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.meet-josephine-right-column {
+  /* Empty column for spacing */
+}
+
+.meet-josephine-characters {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.meet-josephine-character {
+  position: absolute;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.meet-josephine-character-violet {
+  width: 90%;
+  z-index: 3;
+  animation: slideInVioletMeet 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes slideInVioletMeet {
+  from {
+    transform: translateX(-300px) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-80px) translateY(50px);
+    opacity: 1;
+  }
+}
+
+.meet-josephine-character-klaus {
+  width: 70%;
+  z-index: 2;
+  animation: slideInKlausMeet 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes slideInKlausMeet {
+  from {
+    transform: translateX(-300px) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(60px) translateY(50px);
+    opacity: 1;
+  }
+}
+
+.meet-josephine-character-sunny {
+  width: 50%;
+  z-index: 1;
+  animation: slideInSunnyMeet 0.8s ease-out 0.9s forwards;
+}
+
+@keyframes slideInSunnyMeet {
+  from {
+    transform: translateX(-300px) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(200px) translateY(20px);
+    opacity: 1;
+  }
+}
+
+.meet-josephine-text-container {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.0));
+  padding: 160px 80px;
+border-left: 2px solid rgba(255, 255, 255, 0.2);
+border-right: 2px solid rgba(255, 255, 255, 0.2);
+  max-width: 100%;
+  opacity: 0;
+  animation: fadeInText 0.8s ease-out 2s forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.meet-josephine-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-align: left;
+}
