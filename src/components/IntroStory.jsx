@@ -8,7 +8,7 @@ What looks like the start of a fun adventure is, in truth, the beginning of more
 Your quest is simple but crucial:
 Help the Baudelaire orphans and Aunt Josephine escape Count Olaf by communicating with correct English grammar.`;
 
-function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
+function IntroStory({ onReady, onLeave, onBack, isFadingOut, isFadingIn }) {
   const [displayedText, setDisplayedText] = useState("");
   const [showButtons, setShowButtons] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
@@ -84,6 +84,16 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
       onClick={skipTyping}
       style={{ cursor: isTyping ? 'pointer' : 'default' }}
     >
+      {onBack && showButtons && (
+        <button className="back-button" onClick={onBack}>
+          ←
+        </button>
+      )}
+      {onReady && showButtons && (
+        <button className="next-button" onClick={handleReady}>
+          →
+        </button>
+      )}
       <div className="intro-background">
         <img 
           src={backgroundImage} 
@@ -133,16 +143,6 @@ function IntroStory({ onReady, onLeave, isFadingOut, isFadingIn }) {
               {displayedText.length < fullText.length && (
                 <span className="typing-cursor">|</span>
               )}
-            </div>
-          )}
-          {showButtons && !isFadingToGame && (
-            <div className="intro-story-buttons">
-              <button className="intro-button leave-button" onClick={onLeave}>
-                Leave
-              </button>
-              <button className="intro-button ready-button" onClick={handleReady}>
-                Ready
-              </button>
             </div>
           )}
         </div>

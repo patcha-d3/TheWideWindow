@@ -21,13 +21,14 @@ function shuffleArray(array) {
   return shuffled;
 }
 
-function WordOrderGame() {
+function WordOrderGame({ onBack, onContinue }) {
   const [words, setWords] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [feedback, setFeedback] = useState("");
   const [showContinue, setShowContinue] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
+  const [showHint, setShowHint] = useState(false);
 
   // Initialize with shuffled words
   useEffect(() => {
@@ -134,12 +135,23 @@ function WordOrderGame() {
 
   // Handle continue to next level
   const handleContinue = () => {
-    // TODO: Navigate to next level
-    console.log("Continue to next level");
+    if (onContinue) {
+      onContinue();
+    } else {
+      console.log("Continue to next level");
+    }
   };
 
   return (
     <div className="word-order-game">
+      <button className="back-button" onClick={onBack || (() => {})}>
+        ←
+      </button>
+      {showContinue && (
+        <button className="next-button" onClick={handleContinue}>
+          →
+        </button>
+      )}
         <div className="game-container">
         <h1 className="game-title">Form the correct sentence</h1>
         <p className="game-instruction">
@@ -203,13 +215,17 @@ function WordOrderGame() {
           </div>
         )}
 
-        {showContinue && (
-          <button
-            className="continue-button"
-            onClick={handleContinue}
-          >
-            Continue
-          </button>
+        <button
+          className="hint-button"
+          onClick={() => setShowHint(!showHint)}
+        >
+          Hint
+        </button>
+
+        {showHint && (
+          <div className="hint-message">
+            Subject + linking verb + adjective + prepositional phrase (+ noun phrase modifier)
+          </div>
         )}
       </div>
     </div>

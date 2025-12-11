@@ -1,10 +1,31 @@
+import { useState, useEffect } from "react";
 import "./03_MeetJosephine.css";
 
-function MeetJosephine({ onContinue, isFadingOut, isFadingIn }) {
+function MeetJosephine({ onContinue, onBack, isFadingOut, isFadingIn }) {
+  const [showButtons, setShowButtons] = useState(false);
   const fadeClass = isFadingOut ? "fade-out" : isFadingIn ? "fade-in" : "";
+
+  useEffect(() => {
+    // Text appears at 2s and animation takes 0.8s, so buttons show at 2.8s
+    const timer = setTimeout(() => {
+      setShowButtons(true);
+    }, 2800); // 2s delay + 0.8s animation
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className={`meet-josephine ${fadeClass}`}>
+      {onBack && showButtons && (
+        <button className="back-button" onClick={onBack}>
+          ←
+        </button>
+      )}
+      {onContinue && showButtons && (
+        <button className="next-button" onClick={onContinue}>
+          →
+        </button>
+      )}
       <div className="meet-josephine-background">
         <img 
           src="/images/03_bg.png" 
@@ -42,9 +63,6 @@ function MeetJosephine({ onContinue, isFadingOut, isFadingIn }) {
               Since that day, she became terrified of almost everything, especially anything connected to Lake Lachrymose.
             </div>
           </div>
-          <button className="meet-josephine-next-button" onClick={onContinue}>
-            Next
-          </button>
         </div>
         <div className="meet-josephine-right-column">
         </div>
