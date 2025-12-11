@@ -1,20 +1,12 @@
-# Word Order Game
+# TheWideWindow
 
-เกมเรียงคำให้เป็นประโยคที่ถูกต้อง สร้างด้วย React + Vite
+Final Course Project for Design 3
+Design by Pat Sricome
+Created by React + Vite
 
-## วิธีรัน
+## How to Play
 
 ```bash
 npm install
 npm run dev
 ```
-
-## ฟีเจอร์
-
-- เรียงคำโดยการคลิกเพื่อสลับตำแหน่ง
-- Drag & Drop เพื่อจัดเรียงคำ
-- ตรวจสอบคำตอบ
-- แสดงคำตอบที่ถูกต้องเมื่อตอบผิด
-- ปุ่ม Reset เพื่อเริ่มใหม่
-
-# TheWideWindow
