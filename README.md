@@ -1,12 +1,11 @@
 # TheWideWindow
 
-Final Course Project for Design 3
-Design by Pat Sricome
-Created by React + Vite
-
+Final Course Project for Design 3<br>
+Design by Pat Sricome<br>
+Created by React + Vite<br>
+<br><br>
 ## How to Play
 
 ```bash
-npm install
-npm run dev
+https://the-wide-window.vercel.app/
 ```
