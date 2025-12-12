@@ -7,6 +7,8 @@ function Cave({ onContinue, onBack, isFadingOut, isFadingIn }) {
   const [showChoices, setShowChoices] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [showResult, setShowResult] = useState(false);
+  const [showAuntShake, setShowAuntShake] = useState(false);
+  const [showChatBubble, setShowChatBubble] = useState(false);
   const fadeClass = isFadingOut ? "fade-out" : isFadingIn ? "fade-in" : "";
 
   const correctChoice = 1; // Choice 1 is correct
@@ -35,6 +37,20 @@ function Cave({ onContinue, onBack, isFadingOut, isFadingIn }) {
         setShowResult(true);
         setShowButtons(true);
       }, 500);
+    } else {
+      // Show shaking animation and chat bubble for incorrect answer
+      setShowAuntShake(true);
+      setShowChatBubble(true);
+      
+      // Reset shaking after animation completes
+      setTimeout(() => {
+        setShowAuntShake(false);
+      }, 600);
+      
+      // Hide chat bubble after 3 seconds
+      setTimeout(() => {
+        setShowChatBubble(false);
+      }, 3000);
     }
   };
 
@@ -59,6 +75,21 @@ function Cave({ onContinue, onBack, isFadingOut, isFadingIn }) {
       </div>
       <div className="cave-layout">
         <div className="cave-left-column">
+          <div className="cave-characters-left">
+            <img 
+              src="/images/char_aunt.png" 
+              alt="Aunt Josephine" 
+              className={`cave-character cave-character-aunt ${showAuntShake ? 'shake' : ''}`}
+            />
+            {showChatBubble && (
+              <div className="cave-chat-bubble">
+                <div className="cave-chat-bubble-text">
+                  Sorry, I'm not sure I understand
+                </div>
+                <div className="cave-chat-bubble-tail"></div>
+              </div>
+            )}
+          </div>
         </div>
         <div className="cave-center-column">
           {showDescription && (

@@ -14,6 +14,7 @@ function IntroStory({ onReady, onLeave, onBack, isFadingOut, isFadingIn }) {
   const [isTyping, setIsTyping] = useState(true);
   const [backgroundImage, setBackgroundImage] = useState("/images/scene_title_blank.png");
   const [isFadingToGame, setIsFadingToGame] = useState(false);
+  const [showCountOlaf, setShowCountOlaf] = useState(false);
   const fadeClass = isFadingOut ? "fade-out" : isFadingIn ? "fade-in" : "";
   const timeoutRefs = useRef([]);
   const isTypingRef = useRef(true);
@@ -29,6 +30,10 @@ function IntroStory({ onReady, onLeave, onBack, isFadingOut, isFadingIn }) {
       setShowButtons(true);
       setIsTyping(false);
       isTypingRef.current = false;
+      // Show Count Olaf if text contains his name
+      if (fullText.includes("Count Olaf")) {
+        setShowCountOlaf(true);
+      }
     }
   };
 
@@ -51,7 +56,14 @@ function IntroStory({ onReady, onLeave, onBack, isFadingOut, isFadingIn }) {
 
     const typeNextChar = () => {
       if (currentIndex < fullText.length && isTypingRef.current) {
-        setDisplayedText(fullText.slice(0, currentIndex + 1));
+        const newText = fullText.slice(0, currentIndex + 1);
+        setDisplayedText(newText);
+        
+        // Check if "Count Olaf" appears in the displayed text
+        if (newText.includes("Count Olaf") && !showCountOlaf) {
+          setShowCountOlaf(true);
+        }
+        
         currentIndex++;
         const timeoutId = setTimeout(typeNextChar, typingSpeed);
         timeoutRefs.current.push(timeoutId);
@@ -76,7 +88,7 @@ function IntroStory({ onReady, onLeave, onBack, isFadingOut, isFadingIn }) {
       timeoutRefs.current.forEach(timeoutId => clearTimeout(timeoutId));
       timeoutRefs.current = [];
     };
-  }, []);
+  }, [showCountOlaf]);
 
   return (
     <div 
@@ -147,6 +159,15 @@ function IntroStory({ onReady, onLeave, onBack, isFadingOut, isFadingIn }) {
           )}
         </div>
         <div className="intro-story-right-column">
+          {showCountOlaf && (
+            <div className="intro-characters-right">
+              <img 
+                src="/images/char_olaf.png" 
+                alt="Count Olaf" 
+                className="intro-character intro-character-olaf"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

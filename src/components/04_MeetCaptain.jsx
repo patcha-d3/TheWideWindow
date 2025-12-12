@@ -35,6 +35,13 @@ function MeetCaptain({ onContinue, onBack, isFadingOut, isFadingIn }) {
       </div>
       <div className="meet-captain-layout">
         <div className="meet-captain-left-column">
+          <div className="meet-captain-characters-left">
+            <img 
+              src="/images/char_sham.png" 
+              alt="Captain Sham" 
+              className="meet-captain-character meet-captain-character-sham"
+            />
+          </div>
         </div>
         <div className="meet-captain-center-column">
           <div className="meet-captain-text-container">
@@ -64,6 +71,11 @@ function MeetCaptain({ onContinue, onBack, isFadingOut, isFadingIn }) {
               src="/images/char_sunny.png" 
               alt="Sunny" 
               className="meet-captain-character meet-captain-character-sunny"
+            />
+            <img 
+              src="/images/char_aunt.png" 
+              alt="Aunt Josephine" 
+              className="meet-captain-character meet-captain-character-aunt"
             />
           </div>
         </div>

@@ -1,0 +1,424 @@
+.duel-sham {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.duel-sham.fade-out {
+  opacity: 0;
+}
+
+.duel-sham.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.duel-sham-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.duel-sham-water-container {
+  position: absolute;
+  bottom: -5%;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  pointer-events: none;
+  animation: waterRise 3s ease-in-out infinite;
+}
+
+@keyframes waterRise {
+  0%, 100% {
+    bottom: -6%;
+  }
+  50% {
+    bottom: -5.5%;
+  }
+}
+
+.water-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.duel-sham-grain-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+.grain-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.duel-sham-layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 40px;
+  padding: 40px;
+  z-index: 10;
+}
+
+.duel-sham-left-column {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.duel-sham-boat-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.duel-sham-boat {
+  position: absolute;
+  bottom: -320px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  opacity: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  animation: boatFloat 3s ease-in-out infinite;
+}
+
+@keyframes boatFloat {
+  0%, 100% {
+    transform: translateX(0) translateY(-3px) scaleX(-1);
+  }
+  50% {
+    transform: translateX(0) translateY(10px) scaleX(-1);
+  }
+}
+
+.duel-sham-center-column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.duel-sham-right-column {
+  /* Empty column for spacing */
+}
+
+.duel-sham-character-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.duel-sham-character {
+  width: 80%;
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  animation: fadeInCharacter 1s ease-out forwards;
+}
+
+@keyframes fadeInCharacter {
+  from {
+    opacity: 0;
+    transform: translateX(400px) translateY(20px) scaleX(-1);
+  }
+  to {
+    opacity: 1;
+    transform:translateX(400px)  translateY(30px)  scaleX(-1);
+  }
+}
+
+.duel-sham-chat-bubble {
+  position: absolute;
+  top: 42%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  margin-top: -150px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 24px 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  animation: fadeInBubble 0.3s ease-out forwards, bubblePulse 2s ease-in-out 0.3s infinite;
+  max-width: 400px;
+  min-width: 400px;
+}
+
+@keyframes fadeInBubble {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+.duel-sham-chat-bubble-text {
+  color: #333;
+  font-size: 1.2rem;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.duel-sham-chat-bubble-hint {
+  color: #0066cc;
+  font-size: 0.75rem;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.duel-sham-chat-bubble-tail {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.95);
+}
+
+.duel-sham-chat-bubble.fade-out {
+  animation: fadeOutBubble 0.3s ease-out forwards;
+}
+
+@keyframes bubblePulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes fadeOutBubble {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+.duel-sham-shouting-bubble {
+  position: absolute;
+  top: 40%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  background: rgba(255, 200, 200, 0.95);
+  padding: 12px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  animation: fadeInShoutingBubble 0.3s ease-out forwards, bubblePulseShouting 2s ease-in-out 0.3s infinite;
+  max-width: 300px;
+  min-width: 300px;
+  border: 2px solid rgba(255, 100, 100, 0.5);
+}
+
+@keyframes fadeInShoutingBubble {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-50px);
+  }
+}
+
+@keyframes bubblePulseShouting {
+  0%, 100% {
+    transform: translateY(-50%) translateX(-50px) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-50px) scale(1.05);
+  }
+}
+
+.duel-sham-shouting-bubble-text {
+  color: #8b0000;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.duel-sham-shouting-bubble-tail {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgba(255, 200, 200, 0.9);
+}
+
+.duel-sham-final-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.duel-sham-final-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  animation: finalImageZoom 2s ease-out forwards;
+  transform-origin: center center;
+}
+
+@keyframes finalImageZoom {
+  from {
+    transform: scale(4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.back-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  animation: fadeInButton 0.5s ease-out forwards;
+}
+
+.next-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  animation: fadeInButton 0.5s ease-out forwards;
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.next-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}

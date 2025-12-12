@@ -162,7 +162,19 @@
 }
 
 .intro-story-right-column {
-  /* Empty column for spacing */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.intro-characters-right {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .intro-characters {
@@ -230,6 +242,23 @@
   }
   to {
     transform: translateX(200px) translateY(20px);
+    opacity: 1;
+  }
+}
+
+.intro-character-olaf {
+  width: 100%;
+  z-index: 3;
+  animation: slideInOlaf 0.8s ease-out forwards;
+}
+
+@keyframes slideInOlaf {
+  from {
+    transform: translateX(300px) translateY(50px) scaleX(-1);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px) translateY(45px) scaleX(-1);
     opacity: 1;
   }
 }

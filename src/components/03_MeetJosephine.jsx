@@ -3,7 +3,8 @@ import "./03_MeetJosephine.css";
 
 function MeetJosephine({ onContinue, onBack, isFadingOut, isFadingIn }) {
   const [showButtons, setShowButtons] = useState(false);
-  const fadeClass = isFadingOut ? "fade-out" : isFadingIn ? "fade-in" : "";
+  const [showAuntJosephine, setShowAuntJosephine] = useState(false);
+  const fadeClass = isFadingOut ? "fade-out" : "";
 
   useEffect(() => {
     // Text appears at 2s and animation takes 0.8s, so buttons show at 2.8s
@@ -11,11 +12,20 @@ function MeetJosephine({ onContinue, onBack, isFadingOut, isFadingIn }) {
       setShowButtons(true);
     }, 2800); // 2s delay + 0.8s animation
 
-    return () => clearTimeout(timer);
+    // Show Aunt Josephine when text appears (at 2s, same time as text fade in)
+    const auntTimer = setTimeout(() => {
+      setShowAuntJosephine(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(auntTimer);
+    };
   }, []);
 
   return (
     <div className={`meet-josephine ${fadeClass}`}>
+      <link rel="preload" as="image" href="/images/03_bg.png" />
       {onBack && showButtons && (
         <button className="back-button" onClick={onBack}>
           ←
@@ -31,6 +41,8 @@ function MeetJosephine({ onContinue, onBack, isFadingOut, isFadingIn }) {
           src="/images/03_bg.png" 
           alt="Background" 
           className="meet-josephine-background-image"
+          loading="eager"
+          decoding="sync"
         />
       </div>
       <div className="meet-josephine-layout">
@@ -65,6 +77,15 @@ function MeetJosephine({ onContinue, onBack, isFadingOut, isFadingIn }) {
           </div>
         </div>
         <div className="meet-josephine-right-column">
+          {showAuntJosephine && (
+            <div className="meet-josephine-characters-right">
+              <img 
+                src="/images/char_aunt.png" 
+                alt="Aunt Josephine" 
+                className="meet-josephine-character meet-josephine-character-aunt"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -40,6 +40,36 @@ function OntheWay({ onContinue, onBack, isFadingOut, isFadingIn }) {
           className="onthe-way-boat"
         />
       </div>
+      <div className="onthe-way-home-container">
+        <img 
+          src="/images/home.png" 
+          alt="Home" 
+          className="onthe-way-home"
+        />
+      </div>
+      <div className="onthe-way-rain-overlay">
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+      </div>
+      <div className="onthe-way-lightning-overlay"></div>
       <div className="onthe-way-layout">
         <div className="onthe-way-left-column">
         </div>

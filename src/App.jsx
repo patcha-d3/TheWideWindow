@@ -9,6 +9,9 @@ import Disappear from "./components/05_Disappear.jsx";
 import OntheWay from "./components/06_OntheWay.jsx";
 import Cave from "./components/07_Cave.jsx";
 import Sailing from "./components/08_Sailing.jsx";
+import Collapse from "./components/09_Collapse.jsx";
+import DuelSham from "./components/10_DuelSham.jsx";
+import FinalBattle from "./components/11_FinalBattle.jsx";
 import Ending from "./components/12_Ending.jsx";
 
 function App() {
@@ -99,7 +102,31 @@ function App() {
   };
 
   const handleSailingContinue = () => {
+    navigateToPage("collapse");
+  };
+
+  const handleCollapseContinue = () => {
+    navigateToPage("duelSham");
+  };
+
+  const handleCollapseBack = () => {
+    navigateToPage("sailing");
+  };
+
+  const handleDuelShamContinue = () => {
+    navigateToPage("finalBattle");
+  };
+
+  const handleDuelShamBack = () => {
+    navigateToPage("collapse");
+  };
+
+  const handleFinalBattleContinue = () => {
     navigateToPage("ending");
+  };
+
+  const handleFinalBattleBack = () => {
+    navigateToPage("duelSham");
   };
 
   const handleEndingBack = () => {
@@ -196,6 +223,39 @@ function App() {
       <Sailing
         onContinue={handleSailingContinue}
         onBack={handleSailingBack}
+        isFadingOut={isFadingOut}
+        isFadingIn={isFadingIn}
+      />
+    );
+  }
+
+  if (currentPage === "collapse") {
+    return (
+      <Collapse
+        onContinue={handleCollapseContinue}
+        onBack={handleCollapseBack}
+        isFadingOut={isFadingOut}
+        isFadingIn={isFadingIn}
+      />
+    );
+  }
+
+  if (currentPage === "duelSham") {
+    return (
+      <DuelSham
+        onContinue={handleDuelShamContinue}
+        onBack={handleDuelShamBack}
+        isFadingOut={isFadingOut}
+        isFadingIn={isFadingIn}
+      />
+    );
+  }
+
+  if (currentPage === "finalBattle") {
+    return (
+      <FinalBattle
+        onContinue={handleFinalBattleContinue}
+        onBack={handleFinalBattleBack}
         isFadingOut={isFadingOut}
         isFadingIn={isFadingIn}
       />

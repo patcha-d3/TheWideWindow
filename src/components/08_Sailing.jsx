@@ -7,7 +7,16 @@ function Sailing({ onContinue, onBack, isFadingOut, isFadingIn }) {
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [boatPosition, setBoatPosition] = useState(0); // 0: start, 1: 25%, 2: center, 3: further
   const [showButtons, setShowButtons] = useState(false);
+  const [showBoatShake, setShowBoatShake] = useState(false);
+  const [showChatBubble, setShowChatBubble] = useState(false);
+  const [chatMessage, setChatMessage] = useState("");
   const fadeClass = isFadingOut ? "fade-out" : isFadingIn ? "fade-in" : "";
+
+  const auntMessages = [
+    "Aunt Josephine: Sorry, what did you mean?",
+    "Aunt Josephine: Sorry, I didn't quite catch that",
+    "Aunt Josephine: Pardon me, could you explain that again?"
+  ];
 
   const questions = [
     {
@@ -68,6 +77,22 @@ function Sailing({ onContinue, onBack, isFadingOut, isFadingIn }) {
           setShowButtons(true);
         }
       }, 1500);
+    } else {
+      // Show shaking animation and chat bubble for incorrect answer
+      const randomMessage = auntMessages[Math.floor(Math.random() * auntMessages.length)];
+      setChatMessage(randomMessage);
+      setShowBoatShake(true);
+      setShowChatBubble(true);
+      
+      // Reset shaking after animation completes
+      setTimeout(() => {
+        setShowBoatShake(false);
+      }, 600);
+      
+      // Hide chat bubble after 3 seconds
+      setTimeout(() => {
+        setShowChatBubble(false);
+      }, 3000);
     }
   };
 
@@ -85,17 +110,55 @@ function Sailing({ onContinue, onBack, isFadingOut, isFadingIn }) {
       )}
       <div className="sailing-background">
         <img 
-          src="/images/06_bg.png" 
+          src="/images/08_bgback.png" 
           alt="Background" 
           className="sailing-background-image"
+        />
+      </div>
+      <div className="sailing-rain-overlay">
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+        <div className="rain-drop"></div>
+      </div>
+      <div className="sailing-lightning-overlay"></div>
+      <div className="sailing-home-container">
+        <img 
+          src="/images/home.png" 
+          alt="Home" 
+          className="sailing-home"
         />
       </div>
       <div className={`sailing-boat-container sailing-boat-position-${boatPosition}`}>
         <img 
           src="/images/06_boat.svg" 
           alt="Boat" 
-          className="sailing-boat"
+          className={`sailing-boat ${showBoatShake ? 'shake' : ''}`}
         />
+        {showChatBubble && (
+          <div className="sailing-chat-bubble">
+            <div className="sailing-chat-bubble-text">
+              {chatMessage}
+            </div>
+            <div className="sailing-chat-bubble-tail"></div>
+          </div>
+        )}
       </div>
       <div className="sailing-layout">
         <div className="sailing-center-column">
