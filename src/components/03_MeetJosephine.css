@@ -279,14 +279,14 @@ border-right: 2px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   line-height: 1.8;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-align: left;
 }
 
 .meet-josephine-next-button {
   padding: 15px 40px;
   font-size: 1.2rem;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   cursor: pointer;
   border-top: 3px solid rgba(255, 255, 255, 0.5);
   border-bottom: 3px solid rgba(255, 255, 255, 0.5);

@@ -210,7 +210,7 @@
 .duel-sham-chat-bubble-text {
   color: #333;
   font-size: 1.2rem;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   text-align: center;
   word-wrap: break-word;
@@ -219,7 +219,7 @@
 .duel-sham-chat-bubble-hint {
   color: #0066cc;
   font-size: 0.75rem;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   margin-top: 8px;
   font-style: italic;
@@ -303,7 +303,7 @@
   color: #8b0000;
   font-size: 1.8rem;
   font-weight: bold;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   text-align: center;
   word-wrap: break-word;

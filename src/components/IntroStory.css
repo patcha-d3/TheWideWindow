@@ -267,7 +267,7 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   line-height: 1.8;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   white-space: pre-wrap;
   word-wrap: break-word;
   max-width: 100%;
@@ -310,7 +310,7 @@
   padding: 15px 40px;
   margin: 4rem;
   font-size: 1.2rem;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   cursor: pointer;
   border-top: 3px solid rgba(255, 255, 255, 0.5);
   border-bottom: 3px solid rgba(255, 255, 255, 0.5);

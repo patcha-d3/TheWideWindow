@@ -93,7 +93,7 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   line-height: 1.8;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
 }
 
@@ -117,7 +117,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .cave-choice:hover {
@@ -178,7 +178,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.8;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
 }
 
@@ -321,7 +321,7 @@
 .cave-chat-bubble-text {
   color: #333;
   font-size: 0.95rem;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'EB Garamond', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   text-align: center;
 }
