@@ -11,6 +11,13 @@
   opacity: 1;
 }
 
+/* Hide logo.svg in FinalBattle page */
+.final-battle .logo-button,
+.final-battle img[src*="logo.svg"],
+.final-battle img[alt*="logo" i] {
+  display: none !important;
+}
+
 .final-battle.fade-out {
   opacity: 0;
 }

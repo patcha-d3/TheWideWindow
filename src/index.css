@@ -65,3 +65,14 @@ body {
   user-select: none;
 }
 
+/* Exception for WordOrderGame - allow drag and drop */
+.word-item {
+  -webkit-user-drag: element !important;
+  -khtml-user-drag: element !important;
+  -moz-user-drag: element !important;
+  -o-user-drag: element !important;
+  user-drag: element !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
